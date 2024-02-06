@@ -71,6 +71,14 @@ dir.exists('data')
 mcs_dashboard_loop <-
   function(la_n){
     
+    default_mcs_file = 
+      'C:/Users/Meng-Le/Downloads/MCS_installation_timeline_chart_data.zip'
+    if(
+      file.exists(default_mcs_file)
+       ){
+      file.remove(default_mcs_file)
+    }
+    
     ## check LA
     la_name <- la_box(la_n)
 
@@ -92,15 +100,17 @@ mcs_dashboard_loop <-
     )
   }
 
-# test
-mcs_dashboard_loop(1)
+# test first to check
+mcs_dashboard_loop(151 + 19)
 
 ## loop
 log <-
   map(
-    .x = 51:100,
+    .x = 151:200,
     .f = mcs_dashboard_loop
   )
 
 log
 ## each file should be like <10kb
+## lancaster not dled
+## had to redl lancaster
