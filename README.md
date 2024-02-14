@@ -19,7 +19,7 @@ Requires:
 
 Also requires a user account to access the MCS dashboard (register [here](https://datadashboard.mcscertified.com)). 
 
-After signing into the dashboard, users can use script XX which will select the nessecary checkboxes to:
+First run `utils.R` then users can use script `dashboard download.R` which load a web-browser and navigate to the MCS dashboard. After signing in (manual input by user), the script will select the necessary checkboxes to:
 - Restrict data by England
 - Open the open box to select individual local authorities (see below) 
 
@@ -28,10 +28,11 @@ After signing into the dashboard, users can use script XX which will select the 
 Then the script will loop these actions for every local authority in England (n = 313 on dashboard):
 - select a local authority
 - click the download button to download the installations over time data
-- renames the downloaded file and moves it to `/data` 
+- renames the downloaded file and moves it to `/data`. By default, it uses my computer's download directory (adjust in `utils.R`) 
 - unselects the local authority (for the next local authority)
 
-There is a delay between actions to adjust for network speeds and to avoid innudating the MCS dashboard with requests. 
+There is a delay between actions to adjust for network speeds and to avoid inundating the MCS dashboard with requests. 
 
 
-Script YY 
+Script `unzip and create file.R` takes the zip files and manipulates them into single tables by technology. Currently only outputs solar pv (saved in outputs)
+
