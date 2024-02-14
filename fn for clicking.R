@@ -51,7 +51,7 @@ dl_and_rename <-
     dl_button = remDr$findElement(using = 'xpath', dl_button_xpath)
     dl_button$clickElement()
     
-    Sys.sleep(runif(1, min = 3, max = 5))
+    Sys.sleep(runif(1, min = 8, max = 12))
     
     ## step 5: Rename the file
     
@@ -67,6 +67,8 @@ dl_and_rename('Allerdale')
 dir.exists('data')
 
 ### put the two functions together 
+
+
 
 mcs_dashboard_loop <-
   function(la_n){
@@ -95,7 +97,7 @@ mcs_dashboard_loop <-
     return(
       ifelse(did_it_dl, 
              la_name %>% paste('downloaded'),
-             la_name %>% paste('not downloaded')
+             paste('Error:', la_name, 'not downloaded')
              )
     )
   }
@@ -106,11 +108,11 @@ mcs_dashboard_loop(151 + 19)
 ## loop
 log <-
   map(
-    .x = 151:200,
+    .x = 250:313,
     .f = mcs_dashboard_loop
   )
-
-log
+ 
+log %>% grepl(pattern = 'not downloaded') %>% table 
 ## each file should be like <10kb
 ## lancaster not dled
 ## had to redl lancaster
